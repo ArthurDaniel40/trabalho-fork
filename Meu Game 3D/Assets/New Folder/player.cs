@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -22,5 +23,10 @@ public class Player : MonoBehaviour
 
         Vector3 direcao = new Vector3(x, 0, y);
         rb.AddForce(direcao * velocidade * Time.deltaTime, ForceMode.Impulse);
+        if (transform.position.y < -5)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+        }
     }
 }
