@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class camera : MonoBehaviour
+namespace New_Folder
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CameraFollow : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Transform playerTransform; // Referência direta ao objeto "Player"
+        [SerializeField] private Vector3 offset;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Start()
+        {
+            if (playerTransform == null)
+            {
+                // Busca o objeto "Player" por tag (opcional)
+                playerTransform = GameObject.FindWithTag("Player").transform;
+                offset = playerTransform.position - transform.position;
+            }
+        }
+
+        void Update()
+        {
+            if (playerTransform != null)
+            {
+                transform.position = playerTransform.position - offset;
+            }
+        }
     }
 }
