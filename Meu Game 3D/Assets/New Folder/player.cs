@@ -8,13 +8,14 @@ namespace New_Folder
         public int velocidade = 10;
         public Rigidbody  rb;
         public int Pulo = 10;
-
+        private AudioSource source;
         public bool noChao = false;
         // Start is called before the first frame update
         void Start()
         {
             Debug.Log("hello mundo");
             TryGetComponent(out rb);
+            TryGetComponent(out source);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -37,7 +38,7 @@ namespace New_Folder
             rb.AddForce(direcao * velocidade * Time.deltaTime, ForceMode.Impulse);
             if ((Input.GetKey(KeyCode.Space)) && noChao)
             {
-          
+                source.Play();
                 rb.AddForce(Vector3.up * Pulo, ForceMode.Impulse);
                 noChao = false;
             }
