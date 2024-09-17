@@ -19,8 +19,10 @@ namespace New_Folder
 
         void Update()
         {
-            mouseInput = new Vector2(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"));
-                
+            mouseInput = new Vector2(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y")).normalized;
+           // float anguloX = transform.eulerAngles.x;
+            float anguloY = transform.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0,anguloY+mouseInput.y,0);
             
             
             
