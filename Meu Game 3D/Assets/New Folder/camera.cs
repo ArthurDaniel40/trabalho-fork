@@ -6,7 +6,7 @@ namespace New_Folder
     {
         [SerializeField] private Transform playerTransform; // Referência direta ao objeto "Player"
         [SerializeField] private Vector3 offset;
-
+        public Vector2 mouseInput;
         void Start()
         {
             if (playerTransform == null)
@@ -19,6 +19,11 @@ namespace New_Folder
 
         void Update()
         {
+            mouseInput = new Vector2(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"));
+                
+            
+            
+            
             if (playerTransform != null)
             {
                 transform.position = playerTransform.position - offset;
